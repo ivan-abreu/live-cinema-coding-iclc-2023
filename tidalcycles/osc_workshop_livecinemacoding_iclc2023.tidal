@@ -1,0 +1,161 @@
+-- live cinema coding workshop
+
+import Sound.Tidal.Context
+
+let  targetdpv = Target {oName = "livecinemaconding",
+                        oAddress = "127.0.0.1",
+                        oPort = 1818,
+                        oLatency = 0.2,
+                        oWindow = Nothing,
+                        oSchedule = Live,
+                        oBusPort = Nothing,
+                        oHandshake = False
+                       }
+     formatsdpv = [OSC "/delivery"  Named {requiredArgs = []} ]
+     oscmapdpv = [(targetdpv, formatsdpv),
+                 (superdirtTarget, [superdirtShape])
+                 ]
+     --
+     ue_normalizedtime = pF "ue_normalizedtime"
+     ue_scene = pS "ue_scene"
+     ue_level = pS "ue_level"
+     -- unreal_engine cameras
+     ue_camera = pI "ue_camera"
+     ue_camerablendtime = pF "ue_camerablendtime"
+     --
+     ue_exposure = pF "ue_exposure"
+     --
+     ue_exposurefrom = pF "ue_exposurefrom"
+     ue_exposureto = pF "ue_exposureto"
+     ue_exposureramp from to t = ue_exposurefrom from # ue_exposureto to # ue_normalizedtime t
+     --
+     --
+     ue_offsetr = pF "ue_offsetr"
+     ue_offsetg = pF "ue_offsetg"
+     ue_offsetb = pF "ue_offsetb"
+     ue_offsetw = pF "ue_offsetw"
+     ue_offsetrgbw r g b w = ue_offsetr r # ue_offsetg g # ue_offsetb b # ue_offsetw w
+     --
+     ue_offsettime = pF "ue_offsettime"
+     ue_offsetr2 = pF "ue_offsetr2"
+     ue_offsetg2 = pF "ue_offsetg2"
+     ue_offsetb2 = pF "ue_offsetb2"
+     ue_offsetw2 = pF "ue_offsetw2"
+     ue_offsetrgbwramp r1 g1 b1 w1 r2 g2 b2 w2 t = ue_offsetr r1 # ue_offsetg g1 # ue_offsetb b1 # ue_offsetw w1 # ue_offsetr2 r2 # ue_offsetg2 g2 # ue_offsetb2 b2 # ue_offsetw2 w2 # ue_normalizedtime t
+     --
+     ue_rectlight = pI "ue_rectlight"
+     ue_onoff = pI "ue_onoff"
+     ue_intensity = pF "ue_intensity"
+     --
+     ue_intensityfrom = pF "ue_intensityfrom"
+     ue_intensityto = pF "ue_intensityto"
+     ue_intensityramp from to t = ue_intensityfrom from # ue_intensityto to # ue_normalizedtime t
+     --
+     ue_red = pF "ue_red"
+     ue_green = pF "ue_green"
+     ue_blue = pF "ue_blue"
+     ue_color r g b = ue_red r # ue_green g # ue_blue b
+     ue_redfrom = pF "ue_redfrom"
+     ue_greenfrom = pF "ue_greenfrom"
+     ue_bluefrom = pF "ue_bluefrom"
+     ue_redto = pF "ue_redto"
+     ue_greento = pF "ue_greento"
+     ue_blueto = pF "ue_blueto"
+     ue_colorramp rfrom gfrom bfrom rto gto bto t =   ue_redfrom rfrom # ue_greenfrom gfrom # ue_bluefrom bfrom
+                                                    # ue_redto rto # ue_greento gto # ue_blueto bto
+                                                    # ue_normalizedtime t
+     -- GEOMETRY --
+     ue_geometry = pI "ue_geometry"
+     --
+     ue_visible = pI "ue_visible"
+     -- TRANSFORMATION MATRIX --
+     ue_worldlocationx = pF "ue_worldlocationx"
+     ue_worldlocationy = pF "ue_worldlocationy"
+     ue_worldlocationz = pF "ue_worldlocationz"
+     ue_worldlocation x y z = ue_worldlocationx x # ue_worldlocationy y # ue_worldlocationz z
+     ue_worldlocationxfrom = pF "ue_worldlocationxfrom"
+     ue_worldlocationyfrom = pF "ue_worldlocationyfrom"
+     ue_worldlocationzfrom = pF "ue_worldlocationzfrom"
+     ue_worldlocationxto = pF "ue_worldlocationxto"
+     ue_worldlocationyto = pF "ue_worldlocationyto"
+     ue_worldlocationzto = pF "ue_worldlocationzto"
+     ue_worldlocationramp xfrom yfrom zfrom xto yto zto t =   ue_worldlocationxfrom xfrom # ue_worldlocationyfrom yfrom # ue_worldlocationzfrom zfrom
+                                                            # ue_worldlocationxto xto # ue_worldlocationyto yto # ue_worldlocationzto zto
+                                                            # ue_normalizedtime t
+     ue_worldtranslatex = pF "ue_worldtranslatex"
+     ue_worldtranslatey = pF "ue_worldtranslatey"
+     ue_worldtranslatez = pF "ue_worldtranslatez"
+     ue_worldtranslate x y z = ue_worldtranslatex x # ue_worldtranslatey y # ue_worldtranslatez z
+     ue_worldrotatex = pF "ue_worldrotatex"
+     ue_worldrotatey = pF "ue_worldrotatey"
+     ue_worldrotatez = pF "ue_worldrotatez"
+     ue_worldrotate x y z = ue_worldrotatex x # ue_worldrotatey y # ue_worldrotatez z
+     ue_worldscalex = pF "ue_worldscalex"
+     ue_worldscaley = pF "ue_worldscaley"
+     ue_worldscalez = pF "ue_worldscalez"
+     ue_worldscale x y z = ue_worldscalex x # ue_worldscaley y # ue_worldscalez z
+     --
+
+tidal <- startStream defaultConfig oscmapdpv
+
+let only = (hush >>)
+    p = streamReplace tidal
+    hush = streamHush tidal
+    panic = do hush
+               once $ sound "superpanic"
+    list = streamList tidal
+    mute = streamMute tidal
+    unmute = streamUnmute tidal
+    -- unmuteAll = streamUnmuteAll tidal
+    -- unsoloAll = streamUnsoloAll tidal
+    solo = streamSolo tidal
+    unsolo = streamUnsolo tidal
+    once = streamOnce tidal
+    first = streamFirst tidal
+    asap = once
+    nudgeAll = streamNudgeAll tidal
+    all = streamAll tidal
+    resetCycles = streamResetCycles tidal
+    setcps = asap . cps
+    getcps = streamGetcps tidal
+    getnow = streamGetnow tidal
+    xfade i = transition tidal True (Sound.Tidal.Transition.xfadeIn 4) i
+    xfadeIn i t = transition tidal True (Sound.Tidal.Transition.xfadeIn t) i
+    histpan i t = transition tidal True (Sound.Tidal.Transition.histpan t) i
+    wait i t = transition tidal True (Sound.Tidal.Transition.wait t) i
+    waitT i f t = transition tidal True (Sound.Tidal.Transition.waitT f t) i
+    jump i = transition tidal True (Sound.Tidal.Transition.jump) i
+    jumpIn i t = transition tidal True (Sound.Tidal.Transition.jumpIn t) i
+    jumpIn' i t = transition tidal True (Sound.Tidal.Transition.jumpIn' t) i
+    jumpMod i t = transition tidal True (Sound.Tidal.Transition.jumpMod t) i
+    mortal i lifespan release = transition tidal True (Sound.Tidal.Transition.mortal lifespan release) i
+    interpolate i = transition tidal True (Sound.Tidal.Transition.interpolate) i
+    interpolateIn i t = transition tidal True (Sound.Tidal.Transition.interpolateIn t) i
+    clutch i = transition tidal True (Sound.Tidal.Transition.clutch) i
+    clutchIn i t = transition tidal True (Sound.Tidal.Transition.clutchIn t) i
+    anticipate i = transition tidal True (Sound.Tidal.Transition.anticipate) i
+    anticipateIn i t = transition tidal True (Sound.Tidal.Transition.anticipateIn t) i
+    forId i t = transition tidal False (Sound.Tidal.Transition.mortalOverlay t) i
+    d1 = p 1 . (|< orbit 0)
+    d2 = p 2 . (|< orbit 1)
+    d3 = p 3 . (|< orbit 2)
+    d4 = p 4 . (|< orbit 3)
+    d5 = p 5 . (|< orbit 4)
+    d6 = p 6 . (|< orbit 5)
+    d7 = p 7 . (|< orbit 6)
+    d8 = p 8 . (|< orbit 7)
+    d9 = p 9 . (|< orbit 8)
+    d10 = p 10 . (|< orbit 9)
+    d11 = p 11 . (|< orbit 10)
+    d12 = p 12 . (|< orbit 11)
+    d13 = p 13
+    d14 = p 14
+    d15 = p 15
+    d16 = p 16
+
+let getState = streamGet tidal
+    setI = streamSetI tidal
+    setF = streamSetF tidal
+    setS = streamSetS tidal
+    setR = streamSetR tidal
+    setB = streamSetB tidal

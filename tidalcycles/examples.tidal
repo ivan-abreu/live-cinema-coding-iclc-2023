@@ -1,0 +1,114 @@
+hush
+
+-- cameras
+asap $ s "bd" # ue_camera 0 # ue_camerablendtime 10
+
+asap $ s "bd" # ue_camera 2  # ue_camerablendtime 0.5
+
+d2 $ slow 4 $ s "superpiano ho*3 ~" # ue_camera "1 [0 1 2] ~"
+# ue_camerablendtime 0.15 # pan 0.5 # note "c2 c4 c3"
+
+hush
+
+-- rgb offset
+d2 $ slow 2 $ s "bd bd"
+# ue_offsetrgbwramp "0.15 0" "0 1" "0.25 0" "-0.5 0"   "0.25 0" "-0.25 0" "0 1" "0.25 0"  1
+
+# ue_camera "1 [0 1 0] ~"
+# ue_camerablendtime 0.15 # pan 0.15
+
+d2 silence
+
+-- post process exposure
+d3 $ fast 1 $ s "super808(4,7)" # legato 4 # n 1 # room 0.4
+# ue_exposureramp 4.0 (0.0) 0.251 # gain 0.8
+
+hush
+
+asap $ ue_offsetrgbwramp (0.15) (0) (0.25) (-0.5)   (0.2) (-0.25) (0) (-0.5)  6
+
+
+-- ue_rectlight
+
+asap $ ue_rectlight "[0,1,2,3]" # ue_onoff 0
+
+asap $ ue_rectlight "[0,1,2,3]" # ue_onoff 1
+
+
+asap $ ue_rectlight 0 # ue_onoff 1
+
+d1 $ fast 16 $ "null!2" #ue_rectlight 0 # ue_onoff "0 1"
+
+d1 silence
+
+d1 $ fast 1 -- $ "null!8"
+$ ue_rectlight "0 0 1 1 2 2 3 3"
+# ue_onoff "1 0 1 0 1 0 1 0"
+
+hush
+
+asap $ ue_rectlight 1 # ue_onoff 1 # ue_intensity 10022
+
+d1 $ fast 2 $ ue_rectlight 1 # ue_onoff 1 # ue_intensity (range 0 4000 rand)
+
+asap $ ue_rectlight 1 # ue_onoff 1 # ue_intensityramp 0 2000 4
+
+d1 $ slow 4 $ ue_rectlight 1 # ue_onoff 1 # ue_intensityramp 0 2000 2
+
+d1 $ slow 2 $ ue_rectlight 1 # ue_onoff 1 # ue_intensityramp 2000 0 2
+
+asap $ ue_rectlight 3 # ue_color 1 0 1
+
+asap $ ue_rectlight "[0,1,2,3]" # ue_color 0 0 0
+
+asap $ ue_rectlight "0 1 2 3" # ue_colorramp 0 0 0   "1 0" "0 1" 0  0.5
+
+-- geometry --
+
+
+asap $ ue_geometry 0 # ue_visible 1
+
+d1 $ ue_geometry "0 0" # ue_visible "0 1"
+
+asap $ ue_geometry 0 # ue_worldlocation 10 100 20
+
+d1 $ ue_geometry "0!2" # ue_worldlocation "10 20" 100 20
+
+
+asap $ ue_geometry 0 # ue_worldrotate 10 100 20
+
+d1 $ fast 32 $ ue_geometry 0 # ue_worldrotate (range (-90) 90 rand) 0 0
+
+asap $ ue_geometry 0 # ue_worldscale 0.1 1 2
+
+d1 $ fast 4 $ ue_geometry "0 0 0 0" # ue_worldscale 1 "0.2 0.5 1 1.5" 1
+
+asap $ ue_geometry 0 # ue_worldtranslate 0 (-4) 0
+
+d1 $ fast 32 $ ue_geometry 0 # ue_worldtranslate 0 (4) 0
+
+hush
+
+asap $ ue_geometry 0 # ue_worldlocationramp 0 0 0   0 0 200  4
+
+hush
+
+--
+d1 $ sometimesBy 0.45 (slow 2) $ sound "bev*16"
+   # begin (slow 4 $ range 0.1 0.4 $ tri)
+   # end 1
+   # legato (slow 8 $ range 0.1 2 $ tri)
+   # vowel "a e i u"
+   # gain 1.0
+   # ue_rectlight "0 0 1 1 2 2 3 3"
+   # ue_onoff "1 0 1 0 1 0 1 0"
+
+d2 $ sound "bd bd*3 [bd [bd bd bd] bd]"
+
+d1 $ stack [
+   sound "bd bd*3 [bd [bd bd bd] bd]",
+   ue_rectlight "[0 0] [1 1 1 1] [[2 2] [3 3 3 3 3 3] 2 2]"
+   # ue_onoff "[0 1] [1 0 1 0] [[1 0] [[1 0] [1 0] [1 0]] [1 0]]"
+]
+
+hush
