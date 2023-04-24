@@ -35,6 +35,12 @@ CAMERAS DEMO (from scratch):
 
 https://livecinemacoding.xyz/videos/workshop-livecinemacoding-cameras.mp4
 
+<video width="1280" height="720" controls>
+  <source src="https://livecinemacoding.xyz/videos/workshop-livecinemacoding-cameras.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
 ## Example of codes
 
 The following Tidal Cycle code switches to camera 2, from the current camera with a 1.5 second transition.
