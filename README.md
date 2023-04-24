@@ -26,3 +26,20 @@ musical patterns into visual patterns.
 
 ### 3. Unreal Engine
 <a href="https://www.unrealengine.com/en-US/download" target="_blank">Unreal Engine</a> is a game engine for 3D creation in real time.
+
+<dl>
+  <br>
+</dl>
+
+## Example of codes
+
+The following Tidal Cycle code switches to camera 2, from the current camera with a 1.5 second transition.
+```haskell
+once $ ue_camera 2  # ue_camerablendtime 1.5
+```
+
+The following Tidal Cycle code alternates cameras 1 and 2 with each cycle, which generates the synesthetic or synchronous perception with the "bd" and "cd" samples of the musical pattern, the changes of the cameras transition in 0.5 seconds.
+```haskell
+d1 $ sound "bd cp" # ue_camera "<1 2>" # ue_camerablendtime 0.5
+```
+
