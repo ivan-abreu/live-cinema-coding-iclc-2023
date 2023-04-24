@@ -82,7 +82,7 @@ EXPOSURE DEMO (from scratch):
 
 The range of the exposure parameter is similar to how it works on a camera, the value is not limited to the range of -1 to 1, higher values can create interesting effects.
 
-The following Tidal Cycle code shifts red to a value of 1, leaving green, blue, and white balance at zero values.
+The following Tidal Cycle code has three examples, the first of which allows you to return the default Unreal Engine exposure.
 
 ```haskell
 once $ ue_exposure 0 -- default value
@@ -92,16 +92,10 @@ once $ ue_exposure (-3) -- very dark
 once $ ue_exposure (6) -- flashing 
 ```
 
-The following Tidal Cycle code creates a ramp between two sets of RGBW colors with a 2 second transition, the first set of RGBW parameters is (-0.25) 1 1 0.5 and the second 0 0 0 0 (which are the default values)
+The following Tidal Cycle code creates a ramp between two exposure values with a transition of 0.4 seconds; the effect is synchronized to the rhythm of the sample "bd"
 
 ```haskell
-once $ ue_offsetrgbwramp (-0.25) 1     1     0.5
-                         0       0     0     0
-                         2
-
--- once $ ue_offsetrgbwramp R G B W (from)
---                          R G B W (to)
---                          2 (seconds)
+d1 $ sound "bd" # ue_exposureramp 8 0 0.4
 ```
 
 
