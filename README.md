@@ -73,3 +73,11 @@ once $ ue_offsetrgbwramp (-0.25) 1     1     0.5
 --                          R G B W (to)
 --                          2 (seconds)
 ```
+
+EXPOSURE DEMO (from scratch):
+
+[![SC2 Video](https://livecinemacoding.xyz/images/workshop-livecinemacoding-exposure-play.jpg)](https://livecinemacoding.xyz/videos/workshop-livecinemacoding-exposure.mp4 "Click to play >") 
+
+### EXPOSURE -- CODE EXAMPLES
+
+
