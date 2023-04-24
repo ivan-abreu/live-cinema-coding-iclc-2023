@@ -80,12 +80,16 @@ EXPOSURE DEMO (from scratch):
 
 ### EXPOSURE -- CODE EXAMPLES
 
-The range of each parameter **R G B W** is between **-1** and **1**, where **1** tends to white and **-1** to black. Negative values need to be enclosed in quotes "-0.5" or in parentheses (-0.5)
+The range of the exposure parameter is similar to how it works on a camera, the value is not limited to the range of -1 to 1, higher values can create interesting effects.
 
 The following Tidal Cycle code shifts red to a value of 1, leaving green, blue, and white balance at zero values.
 
 ```haskell
-once $ ue_offsetrgbw 1 0 0 0
+once $ ue_exposure 0 -- default value
+
+once $ ue_exposure (-3) -- very dark
+
+once $ ue_exposure (6) -- flashing 
 ```
 
 The following Tidal Cycle code creates a ramp between two sets of RGBW colors with a 2 second transition, the first set of RGBW parameters is (-0.25) 1 1 0.5 and the second 0 0 0 0 (which are the default values)
