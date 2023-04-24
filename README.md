@@ -7,7 +7,7 @@
 
 ##### *ICLC 2023*
 # Live Cinema Coding 
-### Ussing **Tidal Cycles**, **Processing** and **Unreal Engine**
+### Using **Tidal Cycles**, **Processing** and **Unreal Engine**
 ##### by **Malitzin Cortes (CNDSD)** and **Ivan Abreu**
 #
 
