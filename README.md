@@ -31,6 +31,10 @@ musical patterns into visual patterns.
   <br>
 </dl>
 
+## CAMERAS DEMO (from scratch):
+
+https://livecinemacoding.xyz/videos/workshop-livecinemacoding-cameras.mp4
+
 ## Example of codes
 
 The following Tidal Cycle code switches to camera 2, from the current camera with a 1.5 second transition.
