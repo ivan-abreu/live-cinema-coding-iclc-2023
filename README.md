@@ -33,7 +33,7 @@ musical patterns into visual patterns.
 
 CAMERAS DEMO (from scratch):
 
-https://livecinemacoding.xyz/videos/workshop-livecinemacoding-cameras.mp4
+[![SC2 Video](https://livecinemacoding.xyz/images/workshop-livecinemacoding-cameras.png)](https://livecinemacoding.xyz/videos/workshop-livecinemacoding-cameras.mp4 "Click to play >") 
 
 
 ## Example of codes
