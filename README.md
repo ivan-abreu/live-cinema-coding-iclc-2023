@@ -80,4 +80,27 @@ EXPOSURE DEMO (from scratch):
 
 ### EXPOSURE -- CODE EXAMPLES
 
+The range of each parameter **R G B W** is between **-1** and **1**, where **1** tends to white and **-1** to black. Negative values need to be enclosed in quotes "-0.5" or in parentheses (-0.5)
 
+The following Tidal Cycle code shifts red to a value of 1, leaving green, blue, and white balance at zero values.
+
+```haskell
+once $ ue_offsetrgbw 1 0 0 0
+```
+
+The following Tidal Cycle code creates a ramp between two sets of RGBW colors with a 2 second transition, the first set of RGBW parameters is (-0.25) 1 1 0.5 and the second 0 0 0 0 (which are the default values)
+
+```haskell
+once $ ue_offsetrgbwramp (-0.25) 1     1     0.5
+                         0       0     0     0
+                         2
+
+-- once $ ue_offsetrgbwramp R G B W (from)
+--                          R G B W (to)
+--                          2 (seconds)
+```
+
+
+### Contact or reports
+
+Please share reports of success / failure with Ivan Abreu via email: data@ivanabreu.net or ivanabreuochoa@gmail.com
