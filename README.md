@@ -36,7 +36,9 @@ CAMERAS DEMO (from scratch):
 [![SC2 Video](https://livecinemacoding.xyz/images/workshop-livecinemacoding-cameras-play.jpg)](https://livecinemacoding.xyz/videos/workshop-livecinemacoding-cameras.mp4 "Click to play >") 
 
 
-## Example of codes
+## ------ Example of codes -------
+
+### CAMERAS
 
 The following Tidal Cycle code switches to camera 2, from the current camera with a 1.5 second transition.
 ```haskell
