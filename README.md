@@ -36,9 +36,7 @@ CAMERAS DEMO (from scratch):
 [![SC2 Video](https://livecinemacoding.xyz/images/workshop-livecinemacoding-cameras-play.jpg)](https://livecinemacoding.xyz/videos/workshop-livecinemacoding-cameras.mp4 "Click to play >") 
 
 
-## ------ Example of codes -------
-
-### CAMERAS
+### CAMERAS -- CODE EXAMPLES
 
 The following Tidal Cycle code switches to camera 2, from the current camera with a 1.5 second transition.
 ```haskell
@@ -50,3 +48,8 @@ The following Tidal Cycle code alternates cameras 1 and 2 with each cycle, which
 d1 $ sound "bd cp" # ue_camera "<1 2>" # ue_camerablendtime 0.5
 ```
 
+OFFSETRGBW DEMO (from scratch):
+
+[![SC2 Video](https://livecinemacoding.xyz/images/workshop-livecinemacoding-offsetrgbw-play.jpg)](https://livecinemacoding.xyz/videos/workshop-livecinemacoding-offsetrgbw.mp4 "Click to play >") 
+
+### OFFSETRGBW -- CODE EXAMPLES
