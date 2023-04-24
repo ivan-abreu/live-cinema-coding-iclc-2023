@@ -54,7 +54,7 @@ OFFSETRGBW DEMO (from scratch):
 
 ### OFFSETRGBW -- CODE EXAMPLES
 
-The range of each parameter **R G B W** is between **-1** and **1**, where **1** tends to white and **-1** to black.
+The range of each parameter **R G B W** is between **-1** and **1**, where **1** tends to white and **-1** to black. Negative values need to be enclosed in quotes "-0.5" or in parentheses (-0.5)
 
 The following Tidal Cycle code shifts red to a value of 1, leaving green, blue, and white balance at zero values.
 
