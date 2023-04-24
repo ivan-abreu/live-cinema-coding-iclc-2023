@@ -31,7 +31,7 @@ musical patterns into visual patterns.
   <br>
 </dl>
 
-## CAMERAS DEMO (from scratch):
+CAMERAS DEMO (from scratch):
 
 https://livecinemacoding.xyz/videos/workshop-livecinemacoding-cameras.mp4
 
