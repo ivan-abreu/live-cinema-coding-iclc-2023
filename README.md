@@ -109,6 +109,8 @@ RECTLIGHTS DEMO (from scratch):
 
 [![SC2 Video](https://livecinemacoding.xyz/images/workshop-livecinemacoding-rectlights-play.jpg)](https://livecinemacoding.xyz/videos/workshop-livecinemacoding-rectlights.mp4 "Click to play >") 
 
+[![SC2 Video](https://livecinemacoding.xyz/images/workshop-livecinemacoding-rectlights-color-play.jpg)](https://livecinemacoding.xyz/videos/workshop-livecinemacoding-rectlights-color.mp4 "Click to play >") 
+
 
 ### RECTLIGHTS -- CODE EXAMPLES
 
