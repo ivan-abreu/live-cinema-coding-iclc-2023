@@ -36,6 +36,7 @@ CAMERAS DEMO (from scratch):
 [![SC2 Video](https://livecinemacoding.xyz/images/workshop-livecinemacoding-cameras-play.jpg)](https://livecinemacoding.xyz/videos/workshop-livecinemacoding-cameras.mp4 "Click to play >") 
 
 
+
 ### CAMERAS -- CODE EXAMPLES
 
 The following Tidal Cycle code switches to camera 2, from the current camera with a 1.5 second transition.
@@ -51,6 +52,8 @@ d1 $ sound "bd cp" # ue_camera "<1 2>" # ue_camerablendtime 0.5
 OFFSETRGBW DEMO (from scratch):
 
 [![SC2 Video](https://livecinemacoding.xyz/images/workshop-livecinemacoding-offsetrgbw-play.jpg)](https://livecinemacoding.xyz/videos/workshop-livecinemacoding-offsetrgbw.mp4 "Click to play >") 
+
+
 
 ### OFFSETRGBW -- CODE EXAMPLES
 
@@ -73,6 +76,8 @@ once $ ue_offsetrgbwramp (-0.25) 1     1     0.5
 --                          R G B W (to)
 --                          2 (seconds)
 ```
+
+
 
 EXPOSURE DEMO (from scratch):
 
@@ -97,6 +102,51 @@ The following Tidal Cycle code creates a ramp between two exposure values with a
 ```haskell
 d1 $ sound "bd" # ue_exposureramp 8 0 0.4
 ```
+
+
+
+RECTLIGHTS DEMO (from scratch):
+
+[![SC2 Video](https://livecinemacoding.xyz/images/workshop-livecinemacoding-rectlights-play.jpg)](https://livecinemacoding.xyz/videos/workshop-livecinemacoding-rectlights.mp4 "Click to play >") 
+
+
+### RECTLIGHTS -- CODE EXAMPLES
+
+The range of the exposure parameter is similar to how it works on a camera, the value is not limited to the range of -1 to 1, higher values can create interesting effects.
+
+The following Tidal Cycle code has three examples, the first of which allows you to return the default Unreal Engine exposure.
+
+```haskell
+asap $ ue_rectlight 0 # ue_onoff 0
+
+asap $ ue_rectlight 1 # ue_onoff 0
+
+asap $ ue_rectlight "[0,1,2,3]" # ue_onoff 0
+
+asap $ ue_rectlight "[0,2]" # ue_onoff 1
+```
+
+The following Tidal Cycle code creates a ramp between two exposure values with a transition of 0.4 seconds; the effect is synchronized to the rhythm of the sample "bd"
+
+```haskell
+once $ ue_rectlight "[0,2]"
+     # ue_intensity 6000
+     
+once $ ue_rectlight "[0,2]"
+     # ue_intensity 200
+```
+
+```haskell
+once $ ue_rectlightramp "[0,2]"
+     # ue_intensity 0 6000 2
+```
+
+```haskell
+d1 $ sound "bd bd:3*8"
+   # ue_rectlight "0 2"
+   # ue_intensityramp 4000 0 "0.8 0.1"
+```
+
 
 
 ### Contact or reports
