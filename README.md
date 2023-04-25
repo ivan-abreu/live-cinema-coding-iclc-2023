@@ -155,7 +155,7 @@ d1 $ sound "bd bd:3*8"
   <br>
 </dl>
 
-### Workshop at HKU Design | Games en Interactie | Muziek en Technologie | HKU X , Utrecht, Nederland
+### Workshop within the ICLC 2023 program, at HKU Design | Interactive Games | Music and technology | HKU X. Utrecht, The Netherlands
 
 [![SC2 Video](https://livecinemacoding.xyz/images/workshop-livecinemacoding-participants-play.jpg)](https://livecinemacoding.xyz/videos/workshop-livecinemacoding-participants.mp4 "Click to play >") 
 ###### Ensemble of the participants improvising through the network on the same projection
