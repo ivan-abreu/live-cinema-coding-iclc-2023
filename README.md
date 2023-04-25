@@ -119,13 +119,13 @@ For lights, the parameter ranges depend on each function. The **ue_rectlight** f
 The following Tidal Cycle code has four examples, the first and second turn off the lights with indexes 0 and 1. The third turns off all four lights simultaneously, and the fourth example turns the lights on simultaneously with indexes 0 and 2.
 
 ```haskell
-asap $ ue_rectlight 0 # ue_onoff 0
+once $ ue_rectlight 0 # ue_onoff 0
 
-asap $ ue_rectlight 1 # ue_onoff 0
+once $ ue_rectlight 1 # ue_onoff 0
 
-asap $ ue_rectlight "[0,1,2,3]" # ue_onoff 0
+once $ ue_rectlight "[0,1,2,3]" # ue_onoff 0
 
-asap $ ue_rectlight "[0,2]" # ue_onoff 1
+once $ ue_rectlight "[0,2]" # ue_onoff 1
 ```
 
 The following Tidal Cycle code has two examples, the first sets the intensity to value 6000 on lights with index 0 and 2. The second sets the intensity to value 200 (subtle) on lights with the same index 0 and 2
@@ -151,6 +151,20 @@ The following Tidal Cycle code produces a synesthetic effect of the lights in sy
 d1 $ sound "bd bd:3*8"
    # ue_rectlight "0 2"
    # ue_intensityramp 4000 0 "0.8 0.1"
+```
+
+The following Tidal Cycle code simultaneously sets the 4 lights (indexes 0,1,2 and 3) to blue (red = 0, green = 0, blue = 1).
+
+```haskell
+once $ ue_rectlightramp "[0,1,2,3]"
+     # ue_color 0 0 1
+```
+
+The following Tidal Cycle code generates a transition from blue (0 0 1) to red (1 0 0) in two seconds, for lights with indexes 0 and 2.
+
+```haskell
+once $ ue_rectlightramp "[0,2]"
+     # ue_colorramp 0 0 1   1 0 0  2
 ```
 
 <dl>
