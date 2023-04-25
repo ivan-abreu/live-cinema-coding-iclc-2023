@@ -164,12 +164,6 @@ d1 $ sound "bd bd:3*8"
   <br>
 </dl>
 
-<dl>
-  <video controls>
-    <source src="https://livecinemacoding.xyz/videos/workshop-livecinemacoding-participants.mp4" type="video/mp4">
-    Your browser does not support HTML video.
-  </video>
-</dl>
 
 
 ### Contact or reports
