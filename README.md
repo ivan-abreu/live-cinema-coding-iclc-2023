@@ -112,9 +112,9 @@ RECTLIGHTS DEMO (from scratch):
 
 ### RECTLIGHTS -- CODE EXAMPLES
 
-The range of the exposure parameter is similar to how it works on a camera, the value is not limited to the range of -1 to 1, higher values can create interesting effects.
+For lights, the parameter ranges depend on each function. The **ue_rectlight** function expects an integer value, which is the index of the lamp in the Unreal Engine list. For the function **ue_onoff** the **1** is used to turn on and the **0** to turn off. In the case of the **ue_intensity** function, the value can be from **0** to **6000** or **8000**. If the **ue_intensutyramp** function is used, 3 parameters are needed, the first two are the start and end of the desired intensity, and the third is the transition time, where 1 is one second, 0.5 is half a second, and 10 would correspond to ten seconds.
 
-The following Tidal Cycle code has three examples, the first of which allows you to return the default Unreal Engine exposure.
+The following Tidal Cycle code has four examples, the first and second turn off the lights with indexes 0 and 1. The third turns off all four lights simultaneously, and the fourth example turns the lights on simultaneously with indexes 0 and 2.
 
 ```haskell
 asap $ ue_rectlight 0 # ue_onoff 0
@@ -126,7 +126,7 @@ asap $ ue_rectlight "[0,1,2,3]" # ue_onoff 0
 asap $ ue_rectlight "[0,2]" # ue_onoff 1
 ```
 
-The following Tidal Cycle code creates a ramp between two exposure values with a transition of 0.4 seconds; the effect is synchronized to the rhythm of the sample "bd"
+The following Tidal Cycle code has two examples, the first sets the intensity to value 6000 on lights with index 0 and 2. The second sets the intensity to value 200 (subtle) on lights with the same index 0 and 2
 
 ```haskell
 once $ ue_rectlight "[0,2]"
@@ -136,10 +136,14 @@ once $ ue_rectlight "[0,2]"
      # ue_intensity 200
 ```
 
+The following Tidal Cycle code generates the transition between intensities 0 and 6000, producing a soft on with a duration of 2 seconds, the lights with indexing 0 and 2.
+
 ```haskell
 once $ ue_rectlightramp "[0,2]"
      # ue_intensity 0 6000 2
 ```
+
+The following Tidal Cycle code produces a synesthetic effect of the lights in sync with the drum pattern.
 
 ```haskell
 d1 $ sound "bd bd:3*8"
