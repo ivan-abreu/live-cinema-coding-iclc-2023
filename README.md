@@ -18,7 +18,7 @@ musical patterns into visual patterns.
 
 Project supported by
 <dl>
-    <img src="https://livecinemacoding.xyz/images/SecretariaCultura_Fonca_C-02-blue.png" width="500" height="82"/>
+    <img src="https://livecinemacoding.xyz/images/SecretariaCultura_Fonca_C-02-blue-ok.png" width="500" height="82"/>
 </dl>
 
 ### 1. Tidal Cycles
