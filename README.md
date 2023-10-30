@@ -20,6 +20,9 @@ Project supported by
 <dl>
     <img src="https://livecinemacoding.xyz/images/SecretariaCultura_Fonca_C-02-blue-ok.png" width="500" height="58"/>
 </dl>
+<dl>
+<br>
+</dl>
 
 ### 1. Tidal Cycles
 <a href="https://tidalcycles.org/" target="_blank">Tidal Cycles</a> is a free/open source software, that allows you to make patterns with code, whether live coding music at algoraves or composing in the studio, created by Alex McLean.
