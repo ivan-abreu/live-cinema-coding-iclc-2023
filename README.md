@@ -16,7 +16,8 @@ sequence cinematographic shots, transform a 3D scene, animate actors, control li
 We use the pattern strength of Tidal to create sound-visual synesthesia and music visualization by refactoring
 musical patterns into visual patterns.
 
-
+Project supported by
+![Secretaria de Apoyo a la creación y Proyectos Culturales](https://livecinemacoding.xyz/images/SecretariaCultura_Fonca_C-02-blue.png)
 
 ### 1. Tidal Cycles
 <a href="https://tidalcycles.org/" target="_blank">Tidal Cycles</a> is a free/open source software, that allows you to make patterns with code, whether live coding music at algoraves or composing in the studio, created by Alex McLean.
